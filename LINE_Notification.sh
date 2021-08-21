@@ -3,5 +3,8 @@
 #.envを読み込む
 source ./.env
 
-LINE_ACCSESS_TOKEN=$MESSAGE
-echo $LINE_ACCSESS_TOKEN
+LINE_ACCESS_TOKEN=$TOKEN
+
+message=$(cat -)
+
+curl -X POST -H "Authorization: Bearer ${LINE_ACCESS_TOKEN}" -F "message=$message" https://notify-api.line.me/api/notify
